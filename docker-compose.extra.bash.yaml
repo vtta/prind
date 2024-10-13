@@ -1,0 +1,12 @@
+services:
+  bash:
+    image: mkuf/klipper:${TAG:-latest}-tools
+    tty: true
+    privileged: true
+    entrypoint: bash
+    working_dir: /opt/klipper
+    network_mode: host
+    volumes:
+      - /dev:/dev
+      - ./config/build.config:/opt/klipper/.config
+      - ./out:/opt/klipper/out
