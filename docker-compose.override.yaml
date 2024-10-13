@@ -25,3 +25,7 @@ services:
       traefik.http.routers.webcam.entrypoints: web
       traefik.http.middlewares.webcam.stripprefix.prefixes: /webcam
       traefik.http.routers.webcam.middlewares: webcam
+
+  # CAN Devices are network devices in the Hosts network namespace.
+  klipper:
+    network_mode: host
