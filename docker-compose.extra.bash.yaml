@@ -3,6 +3,9 @@ services:
     image: mkuf/klipper:${TAG:-latest}-tools
     tty: true
     privileged: true
+    user: root
+    # Python is broken, fix via `ln -sfr /usr/bin/python3 /usr/local/bin/python`
+    # Then enable venv via `source /opt/venv/bin/activate`
     entrypoint: bash
     working_dir: /opt/klipper
     network_mode: host

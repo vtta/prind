@@ -13,3 +13,11 @@ RequiredForOnline=no
 BitRate=1M
 EOF
 ```
+
+After can interface is up, go into the klipper tools image and scan for devices:
+```shell
+sudo docker compose -f docker-compose.extra.bash.yaml run --rm bash
+ln -sr /usr/bin/python3 /usr/local/bin/python
+source /opt/venv/bin/activate
+python scripts/canbus_query.py can0
+```
