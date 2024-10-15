@@ -1,8 +1,3 @@
-# CAN Devices are network devices in the Hosts network namespace.
-services:
-  klipper:
-    network_mode: host
-
 ## Ustreamer base Service
 x-ustreamer-svc: &ustreamer-svc
   image: mkuf/ustreamer:latest
@@ -18,6 +13,10 @@ x-ustreamer-svc: &ustreamer-svc
 
 ## Add your personal config here
 services:
+  # CAN Devices are network devices in the Hosts network namespace.
+  klipper:
+    network_mode: host
+
   webcam:
     <<: *ustreamer-svc
     labels:
