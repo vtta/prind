@@ -1,3 +1,8 @@
+# CAN Devices are network devices in the Hosts network namespace.
+services:
+  klipper:
+    network_mode: host
+
 ## Ustreamer base Service
 x-ustreamer-svc: &ustreamer-svc
   image: mkuf/ustreamer:latest
@@ -15,8 +20,6 @@ x-ustreamer-svc: &ustreamer-svc
 services:
   webcam:
     <<: *ustreamer-svc
-    devices:
-      - /dev/video0:/dev/webcam
     labels:
       org.prind.service: webcam
       traefik.enable: true
@@ -26,6 +29,3 @@ services:
       traefik.http.middlewares.webcam.stripprefix.prefixes: /webcam
       traefik.http.routers.webcam.middlewares: webcam
 
-  # CAN Devices are network devices in the Hosts network namespace.
-  klipper:
-    network_mode: host
